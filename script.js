@@ -1,5 +1,5 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");//given
+var generateBtn = document.querySelector("#generate");
 
 // Values from each criteria assigned to a variable
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -24,36 +24,46 @@ function generatePassword(){
       //If at least one input is true continue 
       if (lwCase || upCase || numbers || spcharacters){
         alert("You have selected at least one criteria");
+        
         //Get all true values???????
         
-        //Loop length amount of time
-        //For each true input => proceed to calculate a random value and save value
+        
+        // Set variables for for loop
+        var randomUpper = "";
+        var randomLower = "";
+        var randomNumbs = "";
+        var randomSplchars = "";
+
+        var randomPass = "";
+
+        // Retrieve random number for each criteria selected 
         for (var i = 0; i < userLength; i++){
-          var randomUpper = randomUpper + (upper[Math.floor(Math.random() * upper.length)]);
-          var randomLower = randomLower + lower[Math.floor(Math.random() * lower.length)];
-          var randomNumbs = randomNumbs + numbs[Math.floor(Math.random() * numbs.length)];
-          var randomSplchars = randomSplchars + splchars[Math.floor(Math.random() * splchars.length)];
+                    
+          randomUpper = randomUpper + upper[Math.floor(Math.random() * upper.length)];
+          randomLower = randomLower + lower[Math.floor(Math.random() * lower.length)];
+          randomNumbs = randomNumbs + numbs[Math.floor(Math.random() * numbs.length)];
+          randomSplchars = randomSplchars + splchars[Math.floor(Math.random() * splchars.length)];
            
-          var randomPass = randomUpper + randomLower + randomNumbs + randomSplchars;
-         
+          randomPass = randomUpper + randomLower + randomNumbs + randomSplchars;
+                  
         }
 
-      // If no input is true don't proceed & get alert
+      // If no input is true don't proceed, get alert, & return empty string
       } else {
         alert("At least one criteria must be selected: Lowercase, Uppercase, numbers, or special characters");
+        return "";
       }
-  // If value is out of bounds don't proceed & get alert
+  // If value is out of bounds don't proceed, get alert, & return empty string
   } else {
       alert("Password length must be between 8 and 128 inclusive.");
+      return "";
   }
-    
   return randomPass;
-}
-
-
+} 
+  
 
 // Write password to the #password input
-function writePassword() { //given
+function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -62,4 +72,4 @@ function writePassword() { //given
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);//given
+generateBtn.addEventListener("click", writePassword);
