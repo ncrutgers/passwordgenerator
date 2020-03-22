@@ -21,31 +21,33 @@ function generatePassword(){
       var numbers = confirm("Choose numbers? \nSelect Ok for yes or Cancel for no");
       var spcharacters = confirm("Choose special characters? \nSelect Ok for yes or Cancel for no");
       
+      var countCriteriaArray = [lwCase, upCase, numbers, spcharacters];
+      // Count all true values
+      var count = countCriteriaArray.filter(Boolean).length;
+      
       //If at least one input is true continue 
-      if (lwCase || upCase || numbers || spcharacters){
+      if(count >= 1){
+
         alert("You have selected at least one criteria");
-        
-        //Get all true values???????
-        
         
         // Set variables for for loop
         var randomUpper = "";
         var randomLower = "";
         var randomNumbs = "";
         var randomSplchars = "";
-
-        var randomPass = "";
-
-        // Retrieve random number for each criteria selected 
-        for (var i = 0; i < userLength; i++){
+        var randomPassString = "";
+        
+       // Retrieve random number for each criteria selected 
+       for (var i = 0; i < userLength; i=i+count){
                     
           randomUpper = randomUpper + upper[Math.floor(Math.random() * upper.length)];
           randomLower = randomLower + lower[Math.floor(Math.random() * lower.length)];
           randomNumbs = randomNumbs + numbs[Math.floor(Math.random() * numbs.length)];
           randomSplchars = randomSplchars + splchars[Math.floor(Math.random() * splchars.length)];
            
-          randomPass = randomUpper + randomLower + randomNumbs + randomSplchars;
-                  
+          randomPassString = randomUpper + randomLower + randomNumbs + randomSplchars;
+          var randomPass = randomPassString.substring(0, userLength);
+                 
         }
 
       // If no input is true don't proceed, get alert, & return empty string
