@@ -35,8 +35,7 @@ function generatePassword(){
           var randomSplchars = randomSplchars + splchars[Math.floor(Math.random() * splchars.length)];
            
           var randomPass = randomUpper + randomLower + randomNumbs + randomSplchars;
-
-          console.log(randomUpper);         
+         
         }
 
       // If no input is true don't proceed & get alert
