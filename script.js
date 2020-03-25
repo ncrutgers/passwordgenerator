@@ -12,6 +12,7 @@ function generatePassword(){
   
   //prompt users for input length and store value
    var userLength = prompt("Choose length of characters between 8 and 128");
+   
   
    //If value is in bound continue
   if((userLength >= 8) && (userLength <= 128)){
@@ -31,21 +32,33 @@ function generatePassword(){
         alert("You have selected at least one criteria");
         
         // Set variables for for loop
+        
         var randomUpper = "";
         var randomLower = "";
         var randomNumbs = "";
         var randomSplchars = "";
         var randomPassString = "";
         
+        
        // Retrieve random number for each criteria selected 
        for (var i = 0; i < userLength; i=i+count){
-                    
-          randomUpper = randomUpper + upper[Math.floor(Math.random() * upper.length)];
-          randomLower = randomLower + lower[Math.floor(Math.random() * lower.length)];
-          randomNumbs = randomNumbs + numbs[Math.floor(Math.random() * numbs.length)];
-          randomSplchars = randomSplchars + splchars[Math.floor(Math.random() * splchars.length)];
+        
+        if(lwCase === true){
+          randomLower = lower[Math.floor(Math.random() * lower.length)];       
+        }
+
+        if(upCase === true){
+          randomUpper = upper[Math.floor(Math.random() * upper.length)];           
+        }        
+          
+        if(numbers === true){
+          randomNumbs = numbs[Math.floor(Math.random() * numbs.length)];          
+        }
+        if(spcharacters === true){  
+          randomSplchars = splchars[Math.floor(Math.random() * splchars.length)];          
+        }
            
-          randomPassString = randomUpper + randomLower + randomNumbs + randomSplchars;
+          randomPassString = randomPassString + randomLower + randomUpper + randomNumbs + randomSplchars; 
           var randomPass = randomPassString.substring(0, userLength);
                  
         }
@@ -60,6 +73,7 @@ function generatePassword(){
       alert("Password length must be between 8 and 128 inclusive.");
       return "";
   }
+
   return randomPass;
 } 
   
