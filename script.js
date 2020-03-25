@@ -11,16 +11,16 @@ var splchars = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 function generatePassword(){
   
   //prompt users for input length and store value
-   var userLength = prompt("Choose length of characters between 8 and 128");
+   var userLength = prompt("Choose length of characters between 8 and 128.");
    
   
    //If value is in bound continue
   if((userLength >= 8) && (userLength <= 128)){
       //prompt users for true and false input
-      var lwCase = confirm("Choose lower case? \nSelect Ok for yes or Cancel for no");
-      var upCase = confirm("Choose upper case? \nSelect Ok for yes or Cancel for no");
-      var numbers = confirm("Choose numbers? \nSelect Ok for yes or Cancel for no");
-      var spcharacters = confirm("Choose special characters? \nSelect Ok for yes or Cancel for no");
+      var lwCase = confirm("Choose lower case? \nSelect Ok for yes or Cancel for no.");
+      var upCase = confirm("Choose upper case? \nSelect Ok for yes or Cancel for no.");
+      var numbers = confirm("Choose numbers? \nSelect Ok for yes or Cancel for no.");
+      var spcharacters = confirm("Choose special characters? \nSelect Ok for yes or Cancel for no.");
       
       var countCriteriaArray = [lwCase, upCase, numbers, spcharacters];
       // Count all true values
@@ -29,7 +29,7 @@ function generatePassword(){
       //If at least one input is true continue 
       if(count >= 1){
 
-        alert("You have selected at least one criteria");
+        alert("Thank you! You have selected at least one criteria.");
         
         // Set variables for for loop
         
@@ -65,7 +65,7 @@ function generatePassword(){
 
       // If no input is true don't proceed, get alert, & return empty string
       } else {
-        alert("At least one criteria must be selected: Lowercase, Uppercase, numbers, or special characters");
+        alert("At least one criteria must be selected: lowercase, uppercase, numbers, or special characters.");
         return "";
       }
   // If value is out of bounds don't proceed, get alert, & return empty string
